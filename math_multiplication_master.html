@@ -126,7 +126,7 @@
             <div class="space-y-3 text-left">
                 <div class="flex justify-between items-center px-1">
                     <label class="text-sm font-semibold text-amber-300 flex items-center gap-2">
-                        <i class="fa-solid fa-list-check"></i> เลือกแม่สูตรคูณ (1-12)
+                        <i class="fa-solid fa-list-check"></i> เลือกแม่สูตรคูณ (2-12)
                     </label>
                     <div class="space-x-2 text-xs">
                         <button id="btnSelectAll" class="text-amber-400 hover:underline active:opacity-70">เลือกทั้งหมด</button>
@@ -135,9 +135,9 @@
                     </div>
                 </div>
 
-                <!-- Tables Grid 1-12 -->
+                <!-- Tables Grid 2-12 -->
                 <div id="tableGrid" class="grid grid-cols-4 gap-2 sm:gap-2.5">
-                    <!-- Dynamic check buttons 1-12 will be populated by JS -->
+                    <!-- Dynamic check buttons 2-12 will be populated by JS -->
                 </div>
                 <p id="tableError" class="text-xs text-rose-400 hidden text-center pt-1 font-medium">
                     ⚠️ โปรดเลือกแม่สูตรคูณอย่างน้อย 1 แม่!
@@ -362,8 +362,8 @@
     <!-- JAVASCRIPT GAME ENGINE LOGIC              -->
     <!-- ========================================== -->
     <script>
-        // Game Configuration & State
-        let selectedTables = [2, 3, 4, 5]; // Default selected tables
+        // Game Configuration & State (Default selected tables: 2 to 5)
+        let selectedTables = [2, 3, 4, 5]; 
         let gameMode = 'standard';         // 'standard' or 'time_attack'
         
         // Gameplay Dynamics
@@ -410,7 +410,8 @@
             const grid = document.getElementById('tableGrid');
             grid.innerHTML = '';
 
-            for (let i = 1; i <= 12; i++) {
+            // Render tables starting from 2 to 12
+            for (let i = 2; i <= 12; i++) {
                 const isSelected = selectedTables.includes(i);
                 const btn = document.createElement('button');
                 btn.type = 'button';
@@ -437,7 +438,8 @@
         }
 
         function selectAllTables() {
-            selectedTables = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            // Select all tables from 2 to 12
+            selectedTables = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
             document.getElementById('tableError').classList.add('hidden');
             renderTableGrid();
         }
